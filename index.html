@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital@0;1&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Nunito Sans;
+      }
+
+      .full {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .page-wrap {
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .none {
+        display: none;
+      }
+
+      /* cards */
+      .card {
+        border-radius: 4px;
+        border-radius: 32px;
+        padding: 30px;
+        max-width: 900px;
+        backdrop-filter: blur(32px);
+        box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.3) inset;
+      }
+      .card-header {
+        display: flex;
+        align-items: center;
+        padding-bottom: 21px;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+      .card-tab {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        gap: 3px;
+        flex-wrap: wrap;
+      }
+
+      .card-body {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .card-img {
+        max-width: 224px;
+        height: 128px;
+        overflow: hidden;
+        border-radius: 16px;
+        width: 100%;
+      }
+      .card-text {
+        max-width: 311px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex-grow: 1;
+      }
+
+      /* btns */
+      .btn-circle {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        padding: 15px;
+        border-radius: 50%;
+        display: inline-flex;
+      }
+      .btn-tab {
+        border-radius: 99px;
+        border: none;
+        padding: 12px 24px;
+        cursor: pointer;
+        background-color: transparent;
+        transition: all 1s ease;
+      }
+      .btn-tab.active,
+      .btn-tab:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 1);
+      }
+
+      .btn {
+        border-radius: 99px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 1);
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+        transition: all 1s ease;
+      }
+      .btn:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: rgba(0, 0, 0, 0.9);
+      }
+      .btn--lg {
+        font-size: 20px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 22px;
+        padding: 18px 32px 18px 40px;
+        min-width: 251px;
+      }
+
+      /* text content */
+
+      .h5 {
+        color: var(--white, #fff);
+        font-size: 17px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.17px;
+        padding-bottom: 5px;
+      }
+      .txt-wrap {
+        padding-bottom: 7px;
+      }
+      .txt {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.068px;
+      }
+      /* icon */
+      .stop-icon {
+        position: relative;
+        width: 15px;
+        height: 15px;
+      }
+      .stop-icon:before,
+      .stop-icon:after {
+        content: "";
+        height: 100%;
+        width: 2px;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .stop-icon:after {
+        left: 9px;
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="audio" src="./assets/audio/ambiant-relax-sounds.mp3"></audio>
+    <img id="imageBack" class="full" src="./assets/images/nature.jpg" alt="" />
+    <video
+      loop
+      id="videoBack"
+      class="full none"
+      src="./assets/video/mountains.mp4"
+    ></video>
+    <div class="page-wrap">
+      <div class="card">
+        <div class="card-header">
+          <button class="btn-circle">
+            <img src="./assets/svg/close.svg" alt="" />
+          </button>
+          <div class="card-tab">
+            <button class="btn-tab txt active">Info</button>
+            <button class="btn-tab txt">Chapters</button>
+            <button class="btn-tab txt">Up Next</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-img">
+            <img src="./assets/images/t_rex.png" alt="" />
+          </div>
+          <div class="card-text">
+            <h5 class="h5">Astonishing</h5>
+            <p class="txt txt-wrap">
+              Travel back 66 million years to when majestic dinosaurs and
+              extraordinary creatures roamed the lands, seas, and skies.
+            </p>
+            <p class="txt">Documentary · 1 hr 3 min</p>
+          </div>
+          <div class="card-actions">
+            <button id="playAudioBtn" class="btn btn--lg">
+              <img id="playIcon" src="./assets/svg/play.svg" alt="" />
+              <div id="stopIcon" class="stop-icon none"></div>
+              <span>From Beginning</span>
+            </button>
+            <button id="playVideoBtn" class="btn btn--lg">Go to Series</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function elementById(name) {
+        return document.getElementById(name);
+      }
+      const audio = document.getElementById("audio");
+      const playIcon = document.getElementById("playIcon");
+      const stopIcon = document.getElementById("stopIcon");
+      const imageBack = elementById("imageBack");
+      const videoBack = elementById("videoBack");
+      const playVideoBtn = elementById("playVideoBtn");
+      let isPlay = false;
+      let isVideoPlay = false;
+      elementById("playAudioBtn").addEventListener("click", () => {
+        if (!isPlay) {
+          audio.play();
+          playIcon.style.display = "none";
+          stopIcon.style.display = "block";
+          isPlay = true;
+        } else {
+          audio.pause();
+          playIcon.style.display = "block";
+          stopIcon.style.display = "none";
+          isPlay = false;
+        }
+      });
+      playVideoBtn.addEventListener("click", () => {
+        if (!isVideoPlay) {
+          imageBack.style.display = "none";
+          videoBack.style.display = "block";
+          playVideoBtn.textContent = "Stop Series";
+          isVideoPlay = true;
+          videoBack.play();
+        } else {
+          imageBack.style.display = "block";
+          videoBack.style.display = "none";
+          playVideoBtn.textContent = "Go to Series";
+          isVideoPlay = false;
+        }
+      });
+    </script>
+  </body>
+</html>
